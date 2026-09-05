@@ -2665,9 +2665,11 @@ document.getElementById("archivoAsistencia").addEventListener("change", async fu
 
 /*
  * --------------------------------------------------
- * OBTENER PRIMERA FECHA DEL EXCEL
+ * OBTENER PRIMERA FECHA DEL GRUPO
  * --------------------------------------------------
  */
+
+let primeraFechaGrupo = null;
 
 for (let i = 5; i < encabezados.length; i++) {
 
@@ -2677,27 +2679,21 @@ for (let i = 5; i < encabezados.length; i++) {
         continue;
     }
 
-const fechaEncontrada = convertirFechaExcel(encabezado);
+    const fechaEncontrada = convertirFechaExcel(encabezado);
 
-if (!fechaEncontrada) {
-    continue;
-}
-
-    if (
-        primeraFechaExcel === null ||
-        fechaEncontrada < primeraFechaExcel
-    ) {
-
-        primeraFechaExcel = fechaEncontrada;
-
+    if (!fechaEncontrada) {
+        continue;
     }
+
+    primeraFechaGrupo = fechaEncontrada;
 
     break;
 }
 
-        console.log(
-    "PRIMERA FECHA DEL EXCEL:",
-    primeraFechaExcel
+console.log(
+    "PRIMERA FECHA DEL GRUPO:",
+    hoja.name,
+    primeraFechaGrupo
 );
 
         const indiceInicioSesiones = 5;
