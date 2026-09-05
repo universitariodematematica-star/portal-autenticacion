@@ -1311,13 +1311,11 @@ if (!fecha) {
             .join(" y ");
 
 
-    /*
-     * ----------------------------------------------
-     * FECHA MÍNIMA DEL EXCEL
-     * ----------------------------------------------
-     */
-
-    if (!primeraFechaExcel) {
+/*
+ * ----------------------------------------------
+ * FECHA INDIVIDUAL DEL ALUMNO
+ * ----------------------------------------------
+ */
 
 console.log(
     "FECHA INDIVIDUAL DEL ALUMNO:",
@@ -1326,9 +1324,9 @@ console.log(
     alumno.grupo,
     alumno.primeraFechaExcel
 );
-        
-        if (!alumno.primeraFechaExcel) {
-    
+
+if (!alumno.primeraFechaExcel) {
+
     console.warn(
         "No existe primeraFechaExcel para el alumno:",
         alumno.apellidos,
