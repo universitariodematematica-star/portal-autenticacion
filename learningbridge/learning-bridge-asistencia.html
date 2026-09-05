@@ -1319,17 +1319,28 @@ if (!fecha) {
 
     if (!primeraFechaExcel) {
 
-        console.warn(
-            "No existe primeraFechaExcel."
-        );
+console.log(
+    "FECHA INDIVIDUAL DEL ALUMNO:",
+    alumno.apellidos,
+    alumno.nombres,
+    alumno.grupo,
+    alumno.primeraFechaExcel
+);
+        
+        if (!alumno.primeraFechaExcel) {
+    
+    console.warn(
+        "No existe primeraFechaExcel para el alumno:",
+        alumno.apellidos,
+        alumno.nombres
+    );
 
-        return {
-            textoDiasInasistencias,
-            porcentajeActual: 0,
-            porcentajeProyectado: 0
-        };
-
-    }
+    return {
+        textoDiasInasistencias,
+        porcentajeActual: 0,
+        porcentajeProyectado: 0
+    };
+}
 
 
     /*
