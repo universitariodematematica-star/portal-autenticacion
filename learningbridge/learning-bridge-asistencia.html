@@ -1071,6 +1071,7 @@ function obtenerDiasClase(grupo) {
  */
 
 function convertirFechaExcel(textoFecha) {
+
     if (!textoFecha || typeof textoFecha !== "string") {
         return null;
     }
@@ -1079,11 +1080,14 @@ function convertirFechaExcel(textoFecha) {
         /^(\d{1,2})\s+([A-Za-z]{3,})\s+(\d{4})/
     );
 
-    if (!match) return null;
+    if (!match) {
+        return null;
+    }
 
     const [, dia, mesTextoOriginal, anio] = match;
 
-    const mesTexto = mesTextoOriginal.toLowerCase();
+    const mesTexto =
+        mesTextoOriginal.toLowerCase();
 
     const meses = [
         "january",
@@ -1118,14 +1122,13 @@ function convertirFechaExcel(textoFecha) {
     let indiceMes = -1;
 
     for (let i = 0; i < meses.length; i++) {
-        const nombreCompleto = meses[i];
-        const abreviacion = abreviaciones[i];
 
         if (
-            mesTexto.length >= 3 &&
+            mesTexto === meses[i] ||
+            mesTexto === abreviaciones[i] ||
             (
-                nombreCompleto.startsWith(mesTexto) ||
-                abreviacion === mesTexto
+                mesTexto.length >= 3 &&
+                meses[i].startsWith(mesTexto)
             )
         ) {
             indiceMes = i;
@@ -1137,11 +1140,15 @@ function convertirFechaExcel(textoFecha) {
         return null;
     }
 
-    return new Date(
+    const fecha = new Date(
         Number(anio),
         indiceMes,
         Number(dia)
     );
+
+    fecha.setHours(0, 0, 0, 0);
+
+    return fecha;
 }
 
 
