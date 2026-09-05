@@ -2757,25 +2757,27 @@ const alumnoEncontrado = alumnos.find(alumno =>
          * --------------------------------------------------
          */
 
-        const registroAlumno = {
+const registroAlumno = {
 
-            apellidos: alumnoEncontrado.apellidos,
+    apellidos: alumnoEncontrado.apellidos,
 
-            nombres: alumnoEncontrado.nombres,
+    nombres: alumnoEncontrado.nombres,
 
-            telefono: alumnoEncontrado.telefono,
+    telefono: alumnoEncontrado.telefono,
 
-            grupo: alumnoEncontrado.grupo,
+    grupo: alumnoEncontrado.grupo,
 
-            studentId,
+    primeraFechaExcel: primeraFechaGrupo,
 
-            email,
+    studentId,
 
-            sesiones,
+    email,
 
-            justificacion: justificacionAnterior
+    sesiones,
 
-        };
+    justificacion: justificacionAnterior
+
+};
 
         registrosAsistencia.push(registroAlumno);
 
