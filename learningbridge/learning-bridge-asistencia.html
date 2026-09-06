@@ -2966,9 +2966,10 @@ localStorage.setItem(
 
 const cambiosGrupo =
     registrosAsistencia.filter(
-        alumno => alumno.cambioGrupo === true
+        alumno =>
+            alumno.cambioGrupo === true &&
+            alumno.esRegistroHistorico !== true
     );
-
 
 const contenedorCambiosGrupo =
     document.getElementById(
