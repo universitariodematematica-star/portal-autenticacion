@@ -2854,22 +2854,33 @@ const alumnoEncontrado = alumnos.find(alumno =>
             hoja.name;
 
         if (
-            grupoRegistrado &&
-            grupoExcel &&
-            grupoRegistrado !== grupoExcel
-        ) {
+    grupoRegistrado &&
+    grupoExcel &&
+    grupoRegistrado !== grupoExcel
+) {
 
-            console.warn(
-                "CAMBIO DE GRUPO DETECTADO:",
-                alumnoEncontrado.apellidos,
-                alumnoEncontrado.nombres,
-                "ANTES:",
-                grupoRegistrado,
-                "AHORA:",
-                grupoExcel
-            );
+    console.warn(
+        "CAMBIO DE GRUPO DETECTADO:",
+        alumnoEncontrado.apellidos,
+        alumnoEncontrado.nombres
+    );
 
-        }
+    console.warn(
+        "GRUPO REGISTRADO EN CODIGO:",
+        JSON.stringify(grupoRegistrado)
+    );
+
+    console.warn(
+        "GRUPO EN EXCEL:",
+        JSON.stringify(grupoExcel)
+    );
+
+    console.warn(
+        "¿SON IGUALES?:",
+        grupoRegistrado === grupoExcel
+    );
+
+}
 
 
         /*
