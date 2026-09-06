@@ -2807,6 +2807,21 @@ const registroAlumno = {
 
     grupo: alumnoEncontrado.grupo,
 
+    /*
+     * --------------------------------------------------
+     * INFORMACIÓN DE CAMBIO DE GRUPO
+     * --------------------------------------------------
+     */
+
+    cambioGrupo:
+        alumnoEncontrado.grupo !== hoja.name,
+
+    grupoAnterior:
+        alumnoEncontrado.grupo,
+
+    grupoActual:
+        hoja.name,
+
     primeraFechaExcel: primeraFechaGrupo,
 
     studentId,
