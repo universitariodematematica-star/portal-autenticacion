@@ -1420,8 +1420,8 @@ if (!alumno.primeraFechaExcel) {
      * ----------------------------------------------
      */
 
-    const fechaFinProyeccion =
-        new Date(primeraFechaExcel);
+const fechaFinProyeccion =
+    new Date(alumno.primeraFechaExcel);
 
     fechaFinProyeccion.setMonth(
         fechaFinProyeccion.getMonth() + 7
@@ -1440,7 +1440,7 @@ if (!alumno.primeraFechaExcel) {
 let cantidadClasesPeriodo = 0;
 
 const fechaPeriodo =
-    new Date(primeraFechaExcel);
+    new Date(alumno.primeraFechaExcel);
 
 fechaPeriodo.setHours(0, 0, 0, 0);
 
@@ -1498,7 +1498,8 @@ while (fechaPeriodo < fechaFinProyeccion) {
     console.log("DIAGNÓSTICO INASISTENCIA", {
     alumno: `${alumno.apellidos} ${alumno.nombres}`,
     grupo: alumno.grupo,
-    primeraFechaExcel,
+    primeraFechaExcel:
+    alumno.primeraFechaExcel,
     diasClase,
     inasistenciasAcumuladas,
     inasistenciasSemana: inasistenciasSemana.length,
