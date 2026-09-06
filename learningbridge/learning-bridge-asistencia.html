@@ -2853,7 +2853,8 @@ const alumnoEncontrado = alumnos.find(alumno =>
         const grupoExcel =
             hoja.name;
 
-        if (
+if (
+    !esRegistroHistorico &&
     grupoRegistrado &&
     grupoExcel &&
     grupoRegistrado !== grupoExcel
