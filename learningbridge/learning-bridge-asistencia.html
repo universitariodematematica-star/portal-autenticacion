@@ -1421,14 +1421,6 @@ if (!fecha) {
  * ----------------------------------------------
  */
 
-console.log(
-    "FECHA INDIVIDUAL DEL ALUMNO:",
-    alumno.apellidos,
-    alumno.nombres,
-    alumno.grupo,
-    alumno.primeraFechaExcel
-);
-
 if (!alumno.primeraFechaExcel) {
 
     console.warn(
@@ -1526,20 +1518,6 @@ while (fechaPeriodo < fechaFinProyeccion) {
                 cantidadClasesPeriodo
             ) * 100
             : 0;
-
-    console.log("DIAGNÓSTICO INASISTENCIA", {
-    alumno: `${alumno.apellidos} ${alumno.nombres}`,
-    grupo: alumno.grupo,
-    primeraFechaExcel:
-    alumno.primeraFechaExcel,
-    diasClase,
-    inasistenciasAcumuladas,
-    inasistenciasSemana: inasistenciasSemana.length,
-    cantidadClasesPeriodo,
-    totalInasistenciasProyectadas,
-    porcentajeActual,
-    porcentajeProyectado
-});
 
     /*
      * ----------------------------------------------
@@ -2804,12 +2782,6 @@ for (let i = 5; i < encabezados.length; i++) {
     break;
 }
 
-console.log(
-    "PRIMERA FECHA DEL GRUPO:",
-    hoja.name,
-    primeraFechaGrupo
-);
-
         const indiceInicioSesiones = 5;
 
         const indiceFinSesiones = encabezados.findIndex(
@@ -2863,16 +2835,7 @@ const alumnoEncontrado = alumnos.find(alumno =>
     apellido.includes("SUQUI") ||
     nombre.includes("WASHINGTON")
 ) {
-    console.log(
-        "SUQUI DESDE EXCEL:",
-        JSON.stringify(apellido),
-        JSON.stringify(nombre)
-    );
 
-    console.log(
-        "SUQUI ENCONTRADO:",
-        alumnoEncontrado
-    );
 }
 
     if (alumnoEncontrado) {
