@@ -2933,7 +2933,11 @@ localStorage.setItem(
     JSON.stringify(registrosAsistencia)
 );    
 
-mostrarAlumnos(registrosAsistencia);    
+const registrosActuales = obtenerRegistrosActuales(
+    registrosAsistencia
+);
+
+mostrarAlumnos(registrosActuales);    
 
 if (registrosAsistencia.length > 0) {
 
