@@ -2748,6 +2748,37 @@ const alumnoEncontrado = alumnos.find(alumno =>
 
         /*
          * --------------------------------------------------
+         * DETECTAR CAMBIO DE GRUPO
+         * --------------------------------------------------
+         */
+
+        const grupoRegistrado =
+            alumnoEncontrado.grupo;
+
+        const grupoExcel =
+            hoja.name;
+
+        if (
+            grupoRegistrado &&
+            grupoExcel &&
+            grupoRegistrado !== grupoExcel
+        ) {
+
+            console.warn(
+                "CAMBIO DE GRUPO DETECTADO:",
+                alumnoEncontrado.apellidos,
+                alumnoEncontrado.nombres,
+                "ANTES:",
+                grupoRegistrado,
+                "AHORA:",
+                grupoExcel
+            );
+
+        }
+
+
+        /*
+         * --------------------------------------------------
          * RECUPERAR JUSTIFICACIÓN ANTERIOR
          * --------------------------------------------------
          */
