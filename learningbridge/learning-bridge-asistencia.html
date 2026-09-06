@@ -351,6 +351,54 @@ function obtenerRegistroActual(registros) {
     }
 
     return registrosActivos[registrosActivos.length - 1];
+} 
+
+/*
+ * ==================================================
+ * OBTENER TODOS LOS REGISTROS ACTUALES
+ * ==================================================
+ */
+
+function obtenerRegistrosActuales(registros) {
+
+    if (!Array.isArray(registros)) {
+        return [];
+    }
+
+    const registrosPorEstudiante = {};
+
+    registros.forEach(registro => {
+
+        if (!registro.studentId) {
+            return;
+        }
+
+        const clave = registro.studentId;
+
+        if (!registrosPorEstudiante[clave]) {
+            registrosPorEstudiante[clave] = [];
+        }
+
+        registrosPorEstudiante[clave].push(registro);
+
+    });
+
+    const registrosActuales = [];
+
+    Object.values(registrosPorEstudiante).forEach(
+        registrosEstudiante => {
+
+            const registroActual =
+                obtenerRegistroActual(registrosEstudiante);
+
+            if (registroActual) {
+                registrosActuales.push(registroActual);
+            }
+
+        }
+    );
+
+    return registrosActuales;
 }        
 
 function calcularTotalClasesProyectadas(
