@@ -2859,6 +2859,22 @@ const alumnoEncontrado = alumnos.find(alumno =>
     alumno.nombres === nombre
 );
 
+    if (
+    apellido.includes("SUQUI") ||
+    nombre.includes("WASHINGTON")
+) {
+    console.log(
+        "SUQUI DESDE EXCEL:",
+        JSON.stringify(apellido),
+        JSON.stringify(nombre)
+    );
+
+    console.log(
+        "SUQUI ENCONTRADO:",
+        alumnoEncontrado
+    );
+}
+
     if (alumnoEncontrado) {
 
         /*
