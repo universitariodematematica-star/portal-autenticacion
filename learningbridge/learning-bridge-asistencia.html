@@ -329,6 +329,30 @@ let primeraFechaExcel = null;
  * No se cuentan otros días.
  */
 
+/*
+ * ==================================================
+ * OBTENER REGISTRO ACTUAL DEL ESTUDIANTE
+ * ==================================================
+ */
+
+function obtenerRegistroActual(registros) {
+
+    if (!Array.isArray(registros) || registros.length === 0) {
+        return null;
+    }
+
+    const registrosActivos =
+        registros.filter(registro =>
+            registro.esRegistroHistorico !== true
+        );
+
+    if (registrosActivos.length === 0) {
+        return null;
+    }
+
+    return registrosActivos[registrosActivos.length - 1];
+}        
+
 function calcularTotalClasesProyectadas(
     grupo,
     primeraFecha
