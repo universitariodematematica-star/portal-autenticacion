@@ -2724,20 +2724,30 @@ hoja.eachRow((fila, numeroFila) => {
     const studentId = valores[3];
     const email = valores[4];
 
-    const sesiones = [];
+const sesiones = [];
 
-    for (
-        let indice = indiceInicioSesiones;
-        indice < indiceFinSesiones;
-        indice++
-    ) {
+for (
+    let indice = indiceInicioSesiones;
+    indice < indiceFinSesiones;
+    indice++
+) {
 
-        sesiones.push({
-            fecha: encabezados[indice],
-            asistencia: valores[indice]
-        });
+    sesiones.push({
+        fecha: encabezados[indice],
+        asistencia: valores[indice]
+    });
 
-    }
+}
+
+/*
+ * --------------------------------------------------
+ * IDENTIFICAR REGISTRO HISTÓRICO
+ * --------------------------------------------------
+ */
+
+const esRegistroHistorico = sesiones.some(sesion =>
+    String(sesion.asistencia || "").trim() === "Enrolment suspended"
+);
 
 const alumnoEncontrado = alumnos.find(alumno =>
     alumno.apellidos === apellido &&
