@@ -2926,18 +2926,121 @@ justificacion: justificacionAnterior
 
     });
 
-    window.registrosAsistencia = registrosAsistencia;
+window.registrosAsistencia = registrosAsistencia;
 
 localStorage.setItem(
     "learningBridgeRegistrosAsistencia",
     JSON.stringify(registrosAsistencia)
-);    
-
-const registrosActuales = obtenerRegistrosActuales(
-    registrosAsistencia
 );
 
-mostrarAlumnos(registrosActuales);    
+
+/*
+ * ==================================================
+ * MOSTRAR CAMBIOS DE GRUPO DETECTADOS
+ * ==================================================
+ */
+
+const cambiosGrupo =
+    registrosAsistencia.filter(
+        alumno => alumno.cambioGrupo === true
+    );
+
+
+const contenedorCambiosGrupo =
+    document.getElementById(
+        "cambiosGrupoDetectados"
+    );
+
+
+if (contenedorCambiosGrupo) {
+
+    contenedorCambiosGrupo.innerHTML = "";
+
+    if (cambiosGrupo.length > 0) {
+
+        const titulo =
+            document.createElement("div");
+
+        titulo.textContent =
+            "⚠️ CAMBIOS DE GRUPO DETECTADOS";
+
+        titulo.style.fontWeight = "bold";
+        titulo.style.fontSize = "18px";
+        titulo.style.marginBottom = "12px";
+
+        contenedorCambiosGrupo.appendChild(
+            titulo
+        );
+
+
+        cambiosGrupo.forEach(alumno => {
+
+            const cambio =
+                document.createElement("div");
+
+            cambio.style.marginBottom = "10px";
+            cambio.style.padding = "10px";
+            cambio.style.border = "1px solid #ccc";
+            cambio.style.borderRadius = "6px";
+
+
+            const nombre =
+                document.createElement("div");
+
+            nombre.textContent =
+                `${alumno.apellidos} ${alumno.nombres}`;
+
+            nombre.style.fontWeight = "bold";
+            nombre.style.marginBottom = "5px";
+
+
+            const anterior =
+                document.createElement("div");
+
+            anterior.textContent =
+                `De: ${alumno.grupoAnterior}`;
+
+
+            const actual =
+                document.createElement("div");
+
+            actual.textContent =
+                `A: ${alumno.grupoActual}`;
+
+
+            cambio.appendChild(nombre);
+            cambio.appendChild(anterior);
+            cambio.appendChild(actual);
+
+
+            contenedorCambiosGrupo.appendChild(
+                cambio
+            );
+
+        });
+
+        contenedorCambiosGrupo.style.display =
+            "block";
+
+    }
+    else {
+
+        contenedorCambiosGrupo.style.display =
+            "none";
+
+    }
+
+}
+
+
+/*
+ * ==================================================
+ * MOSTRAR ALUMNOS
+ * ==================================================
+ */
+
+mostrarAlumnos(registrosAsistencia);
+
 
 if (registrosAsistencia.length > 0) {
 
