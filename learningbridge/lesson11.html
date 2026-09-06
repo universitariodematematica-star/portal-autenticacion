@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lesson 11 - Learning Bridge English</title>
+    <title>My Family - Learning Bridge English</title>
     <style>
         * {
             box-sizing: border-box;
@@ -20,13 +20,9 @@
         /* =====================================================
             BOTONES SUPERIORES
         ===================================================== */
-        .top-buttons-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 6px;
+        .print-btn-container {
+            text-align: center;
             margin: 8px 0;
-            flex-wrap: wrap;
         }
 
         .btn-pdf {
@@ -45,7 +41,7 @@
             background-color: #43133c;
         }
 
-        .btn-extra {
+        .btn-next {
             background-color: #178a75;
             color: white;
             border: none;
@@ -56,11 +52,11 @@
             cursor: pointer;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             text-decoration: none;
-            display: inline-flex;
-            align-items: center;
+            display: inline-block;
+            margin-left: 6px;
         }
 
-        .btn-extra:hover {
+        .btn-next:hover {
             background-color: #106856;
         }
 
@@ -93,10 +89,10 @@
         }
 
         /* =====================================================
-            TÍTULO
+            TÍTULO DE LA LECCIÓN
         ===================================================== */
         .lesson-title-area {
-            margin-bottom: 6px;
+            margin-bottom: 8px;
         }
 
         .lesson-title-area h1 {
@@ -108,92 +104,81 @@
         .lesson-title-area p {
             color: #666;
             font-size: 10px;
-            margin-bottom: 6px;
         }
 
         /* =====================================================
-            BOTONES DE NAVEGACIÓN A B C D E
+            LAYOUT EN GRID
         ===================================================== */
-        .nav-letters {
-            display: flex;
-            gap: 4px;
-            flex-wrap: wrap;
-            margin-bottom: 8px;
-        }
-
-        .nav-letter-btn {
-            background-color: #5c1d53;
-            color: white;
-            border: none;
-            border-radius: 12px;
-            padding: 3px 8px;
-            font-size: 9.5px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .nav-letter-btn span {
-            background-color: white;
-            color: #5c1d53;
-            border-radius: 50%;
-            width: 14px;
-            height: 14px;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 8.5px;
-        }
-
-        /* =====================================================
-            GRID DE 2 COLUMNAS
-        ===================================================== */
-        .content-grid-2 {
+        .content-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 270px 1fr;
             gap: 8px;
-            margin-bottom: 6px;
             align-items: start;
         }
 
         /* =====================================================
-            TARJETAS
+            ESTILO BASE PARA LAS TARJETAS
         ===================================================== */
         .card {
             border-radius: 6px;
-            padding: 8px 10px;
+            padding: 6px 9px;
             margin-bottom: 6px;
+            position: relative;
         }
 
-        .card-a {
-            background-color: #fbf6ee;
+        .card:hover {
+            box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+        }
+
+        /* =====================================================
+            COLORES ESPECÍFICOS DE TARJETAS
+        ===================================================== */
+        .card-learning-goal {
+            background-color: #f0f6fc;
+            border: 1px solid #cce0f5;
+        }
+        .card-learning-goal .badge { background-color: #d94b4b; }
+
+        .card-grammar-formula {
+            background-color: #fcf8eb;
             border: 1px solid #f2e3be;
         }
-        .card-a .badge-sec { background-color: #d99b26; }
+        .card-grammar-formula .badge { background-color: #d99b26; }
 
-        .card-b {
+        .card-key-vocab {
             background-color: #f0f7f5;
-            border: 1px solid #cce8e2;
+            border: 1px solid #d0e8e2;
         }
-        .card-b .badge-sec { background-color: #178a75; }
+        .card-key-vocab .badge { background-color: #178a75; }
 
-        .card-c {
-            background-color: #f0f5fc;
-            border: 1px solid #cfe0f5;
+        .card-grammar-context {
+            background-color: #f0f6fc;
+            border: 1px solid #cce0f5;
         }
-        .card-c .badge-sec { background-color: #5c1d53; }
+        .card-grammar-context .badge { background-color: #5c1d53; }
 
-        .card-d {
+        .card-before-reading {
             background-color: #f5f0f7;
             border: 1px solid #e2cce8;
         }
-        .card-d .badge-sec { background-color: #6a2c42; }
+        .card-before-reading .badge { background-color: #6a2c42; }
+
+        .card-culture-reading {
+            background-color: #ffffff;
+            border: 1px solid #dcdfe4;
+        }
+        .card-culture-reading .badge { background-color: #d94b4b; }
+
+        .card-reading-check {
+            background-color: #f0f5fc;
+            border: 1px solid #cfe0f5;
+        }
+        .card-reading-check .badge { background-color: #5c1d53; }
 
         /* =====================================================
-            BADGES
+            ETIQUETAS (BADGES)
         ===================================================== */
-        .badge-sec {
+        .badge {
             display: inline-block;
             color: white;
             padding: 2px 6px;
@@ -201,53 +186,131 @@
             font-size: 9px;
             font-weight: bold;
             text-transform: uppercase;
-            margin-bottom: 4px;
+            margin-bottom: 3px;
             letter-spacing: 0.3px;
         }
 
         /* =====================================================
-            TEXTOS
+            BOTÓN DE PIZARRA INTEGRADO
+        ===================================================== */
+        .board-trigger-btn {
+            background-color: #d99b26;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            font-size: 9px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 5px;
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+
+        .board-trigger-btn:hover {
+            background-color: #b8811e;
+        }
+
+        /* =====================================================
+            TEXTOS Y VOCABULARIO
         ===================================================== */
         p, li {
             font-size: 9.5px;
-            line-height: 1.3;
+            line-height: 1.25;
             color: #333;
         }
 
-        ol {
+        .vocab-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3px;
+            margin-top: 3px;
+        }
+
+        .vocab-tag {
+            background: white;
+            border: 1px solid #bce0d6;
+            padding: 1px 5px;
+            border-radius: 4px;
+            font-size: 8.5px;
+            color: #2c3e50;
+        }
+
+        /* =====================================================
+            COLUMNA DERECHA - LECTURA
+        ===================================================== */
+        .reading-box h2 {
+            color: #5c1d53;
+            font-size: 12.5px;
+            margin-bottom: 3px;
+        }
+
+        .reading-box p {
+            margin-bottom: 5px;
+            text-align: justify;
+            color: #333;
+        }
+
+        .reading-check-box ol {
             padding-left: 14px;
             margin-top: 3px;
         }
 
-        li {
+        .reading-check-box li {
             margin-bottom: 4px;
+            display: flex;
+            align-items: baseline;
+            gap: 4px;
+            flex-wrap: wrap;
         }
 
         /* =====================================================
             LÍNEAS DE RESPUESTA
         ===================================================== */
-        .blank-line {
+        .blank-input {
             border: none;
-            border-bottom: 1px solid #333;
+            border-bottom: 1px solid #178a75;
             background-color: transparent;
             font-size: 9.5px;
-            padding: 0 3px;
+            padding: 0px 3px;
             outline: none;
-            width: 130px;
+            flex-grow: 1;
+            min-width: 150px;
             color: #2c3e50;
-            display: inline-block;
         }
 
-        .blank-line-long {
-            width: 100%;
-            margin-top: 3px;
+        .answer-input {
             border: none;
-            border-bottom: 1px solid #333;
+            border-bottom: 1px solid #178a75;
             background-color: transparent;
             font-size: 9.5px;
-            padding: 0 3px;
+            padding: 0px 3px;
             outline: none;
+            width: 100%;
+            margin-top: 2px;
             color: #2c3e50;
+        }
+
+        /* =====================================================
+            SECCIÓN DE IMAGEN NATIVA
+        ===================================================== */
+        .image-section {
+            margin-top: 6px;
+            background: white;
+            border-radius: 6px;
+            padding: 6px;
+            border: 1px solid #e1e4e8;
+            text-align: center;
+        }
+
+        .image-section img {
+            width: 100% !important;
+            height: auto !important;
+            max-width: 1412px !important;
+            display: block;
+            margin: 0 auto;
+            border-radius: 4px;
         }
 
         /* =====================================================
@@ -257,11 +320,11 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 8px;
+            margin-top: 4px;
             font-size: 8.5px;
             color: #666;
             border-top: 1px solid #ddd;
-            padding-top: 4px;
+            padding-top: 3px;
         }
 
         .bottom-bar {
@@ -271,7 +334,85 @@
         }
 
         /* =====================================================
-            IMPRESIÓN
+            VENTANA MODAL: PIZARRA INTERACTIVA
+        ===================================================== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-container {
+            background: #fff9e6;
+            border: 3px solid #d99b26;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 500px;
+            padding: 15px;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            border-bottom: 2px solid #e6d29c;
+            padding-bottom: 5px;
+        }
+
+        .modal-header h3 {
+            color: #8c6312;
+            font-size: 15px;
+        }
+
+        .close-modal-btn {
+            background: #d99b26;
+            color: white;
+            border: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .board-textarea {
+            width: 100%;
+            height: 150px;
+            border: 1px dashed #d99b26;
+            padding: 8px;
+            font-size: 12px;
+            border-radius: 4px;
+            outline: none;
+            background: white;
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 8px;
+        }
+
+        .btn-board-action {
+            background-color: #5c1d53;
+            color: white;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* =====================================================
+            ESTILOS DE IMPRESIÓN (PDF)
         ===================================================== */
         @media print {
             @page {
@@ -284,11 +425,14 @@
                 -webkit-print-color-adjust: exact;
             }
 
-            .top-buttons-container {
+            .print-btn-container,
+            .modal-overlay,
+            .board-trigger-btn {
                 display: none !important;
             }
 
-            .card {
+            .card,
+            .image-section {
                 box-shadow: none;
                 border: 1px solid #bbb;
             }
@@ -300,117 +444,257 @@
         }
     </style>
 </head>
+
 <body>
 
-    <div class="top-buttons-container">
-        <a class="btn-extra" href="https://universitariodematematica-star.github.io/UCMI/learningbridge/lesson11_practice.html">
-            → Practice and Create (Lesson 11 - Part 2)
-        </a>
-        <button class="btn-pdf" onclick="window.print()">
-            🖨️ Imprimir / Guardar Presentación
-        </button>
+    <!-- BOTONES SUPERIORES -->
+    <div class="print-btn-container">
+        <button class="btn-pdf" onclick="window.print()">🖨️ Imprimir / Guardar Presentación</button>
+        <a class="btn-next" href="https://universitariodematematica-star.github.io/UCMI/learningbridge/lesson12.html">Lesson 12 →</a>
     </div>
 
+    <!-- ENCABEZADO SUPERIOR -->
     <header class="top-header">
-        <span>UNIT 3 / LESSON 11 (PART 1)</span>
+        <span>UNIT 3 / LESSON 11</span>
         <span>LEARNING BRIDGE ENGLISH · A1 CEFR</span>
     </header>
 
     <div class="main-container">
 
+        <!-- TÍTULO -->
         <div class="lesson-title-area">
-            <h1>Daily Routines & Schedules</h1>
+            <h1>My Family</h1>
             <p>Latin American Edition · Culture-based language learning</p>
-
-            <div class="nav-letters">
-                <div class="nav-letter-btn"><span>A</span> Vocabulary & Core</div>
-                <div class="nav-letter-btn"><span>B</span> Grammar Focus</div>
-                <div class="nav-letter-btn"><span>C</span> Reading & Society</div>
-                <div class="nav-letter-btn"><span>D</span> Guided Speaking</div>
-            </div>
         </div>
 
-        <div class="content-grid-2">
+        <!-- CONTENEDOR EN 2 COLUMNAS -->
+        <div class="content-grid">
 
-            <div class="card card-a">
-                <span class="badge-sec">A. Vocabulary & Core</span>
-                <p style="margin-bottom: 4px;">Learn essential terms for daily habits and time:</p>
-                <ol>
-                    <li>1. Morning routine (wake up, have breakfast)</li>
-                    <li>2. Work and study hours</li>
-                    <li>3. Afternoon activities</li>
-                    <li>4. Evening and resting time</li>
-                </ol>
-                <p style="margin-top: 4px;">Write 2 daily routine verbs you practice:</p>
-                <input type="text" class="blank-line-long" data-save="input-l11-main-a-1">
+            <!-- COLUMNA IZQUIERDA -->
+            <div class="left-column">
+                <!-- 1. LEARNING GOAL -->
+                <div class="card card-learning-goal">
+                    <span class="badge">Learning Goal</span>
+                    <p>I can name family members and say who they are.</p>
+                </div>
+
+                <!-- 2. GRAMMAR FORMULA -->
+                <div class="card card-grammar-formula">
+                    <span class="badge">Grammar Formula</span>
+                    <p>
+                        This + is + my + family member<br>
+                        This is my mother.<br>
+                        This is my father.<br>
+                        My + noun + is + complement<br>
+                        My family is important.
+                    </p>
+                    <button class="board-trigger-btn" type="button" onclick="openWhiteboard()">💡 Abrir Pizarra Interactiva</button>
+                </div>
+
+                <!-- 3. KEY VOCABULARY -->
+                <div class="card card-key-vocab">
+                    <span class="badge">Key Vocabulary</span>
+                    <div class="vocab-tags">
+                        <span class="vocab-tag">family</span>
+                        <span class="vocab-tag">mother</span>
+                        <span class="vocab-tag">father</span>
+                        <span class="vocab-tag">sister</span>
+                        <span class="vocab-tag">brother</span>
+                        <span class="vocab-tag">grandmother</span>
+                        <span class="vocab-tag">grandfather</span>
+                        <span class="vocab-tag">parents</span>
+                        <span class="vocab-tag">home</span>
+                        <span class="vocab-tag">respect</span>
+                    </div>
+                </div>
+
+                <!-- 4. GRAMMAR IN CONTEXT -->
+                <div class="card card-grammar-context">
+                    <span class="badge">Grammar in Context</span>
+                    <p>
+                        Use <em>This is my...</em> to introduce one family member.<br>
+                        Use <em>my</em> to show that something or someone belongs to you.<br>
+                        Use family words to talk about people at home.
+                    </p>
+                </div>
+
+                <!-- 5. BEFORE READING -->
+                <div class="card card-before-reading">
+                    <span class="badge">Before Reading</span>
+                    <p>What people are important in a family? What family traditions do you know?</p>
+                </div>
             </div>
 
-            <div class="card card-b">
-                <span class="badge-sec">B. Grammar Focus</span>
-                <p style="margin-bottom: 4px;">
-                    Use Simple Present for routines: <strong>I work / She works / What time do you...?</strong>
-                </p>
-                <ol>
-                    <li>
-                        What time <input type="text" class="blank-line" data-save="input-l11-main-b-1" style="width: 50px;"> you get up?
-                    </li>
-                    <li>
-                        I <input type="text" class="blank-line" data-save="input-l11-main-b-2" style="width: 70px;"> at 6:00 AM every day.
-                    </li>
-                </ol>
-                <input type="text" class="blank-line-long" data-save="input-l11-main-b-3" placeholder="Escribe un ejemplo adicional aquí...">
+            <!-- COLUMNA DERECHA -->
+            <div class="right-column">
+                <!-- 6. CULTURE READING -->
+                <div class="card card-culture-reading reading-box">
+                    <span class="badge">Culture Reading</span>
+                    <h2>Family in Latin America</h2>
+                    <p>Family is very important in many Latin American communities. A family can be small or large. It can include a mother, a father, brothers, sisters, grandparents, cousins, uncles, aunts, and other important people. Family is not only about living in the same house. It is also about care, respect, help, and shared memories.</p>
+                    <p>In many homes, family members spend time together during meals, celebrations, religious events, school activities, and community gatherings. A grandmother can tell stories. A grandfather can give advice. Parents can help children study. Brothers and sisters can play, talk, and learn together.</p>
+                    <p>Family traditions are different in every country and every home. In Ecuador, Colombia, Peru, Mexico, and other countries, families can celebrate birthdays, holidays, local festivals, and special Sundays together. Food, music, stories, and respect are often part of family life.</p>
+                    <p>In English, students can introduce family members with simple sentences: "This is my mother." "This is my brother." "My family is important." These sentences help students talk about people they love and respect.</p>
+                </div>
+
+                <!-- 7. READING CHECK -->
+                <div class="card card-reading-check reading-check-box">
+                    <span class="badge">Reading Check</span>
+                    <p style="font-size: 9px; margin-bottom: 4px;"><strong>A. Read and answer.</strong></p>
+                    <ol>
+                        <li>
+                            <span>What people can be part of a family?</span>
+                            <input type="text" class="blank-input" placeholder="...">
+                        </li>
+                        <li>
+                            <span>What is family also about?</span>
+                            <input type="text" class="blank-input" placeholder="...">
+                        </li>
+                        <li>
+                            <span>What can grandparents do in a family?</span>
+                            <input type="text" class="blank-input" placeholder="...">
+                        </li>
+                        <li>
+                            <span>What can families celebrate together?</span>
+                            <input type="text" class="blank-input" placeholder="...">
+                        </li>
+                        <li>
+                            <span>What sentence introduces a mother?</span>
+                            <input type="text" class="blank-input" placeholder="...">
+                        </li>
+                    </ol>
+
+                    <p style="margin-top: 5px; font-size: 9px;">
+                        <strong>B. Complete:</strong> This is my 
+                        <input type="text" class="blank-input" style="width: 100px;" placeholder="...">. My family is 
+                        <input type="text" class="blank-input" style="width: 100px;" placeholder="...">.
+                    </p>
+
+                    <p style="margin-top: 5px; font-size: 9px;">
+                        <strong>C. Think:</strong> What family tradition is important in your home?
+                    </p>
+                    <input type="text" class="answer-input" placeholder="Escribe aquí tu respuesta...">
+                </div>
+
             </div>
 
         </div>
 
-        <div class="content-grid-2">
+        <!-- IMAGEN NATIVA EN ALTA RESOLUCIÓN -->
+        <div class="image-section">
+            <div class="separator" style="clear: both;">
+                <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiIQ3XAexauMwjSmKSi0wrXsPOkOQ20jRvEKdH4BFGOpIN6wNn7g6bTfnfg27vpyKD0v_8uC0yUjmO97hGQvt1ndX9g3p7rxhCk1L8nOaT9oBzy0MizMTSGFw-co920CC9Kx_rYLeixcrXUeuJIYwKKUJDz2l9w0Lch36sYkyLwtRnjrxJJq347S3kLdpWj/s1412/LB11.png"
+                   style="display: block; padding: 1em 0; text-align: center;"
+                   target="_blank">
 
-            <div class="card card-c">
-                <span class="badge-sec">C. Reading & Society</span>
-                <p style="text-align: justify; margin-bottom: 4px;">
-                    Read about family and community daily schedules in Otavalo and regional towns. Balancing work, markets, and education requires structured habits.
-                </p>
-                <p><strong>Question:</strong> What time do local markets usually start in the morning?</p>
-                <input type="text" class="blank-line-long" data-save="input-l11-main-c-1" placeholder="Escribe tu respuesta aquí...">
+                    <img
+                        alt=""
+                        border="0"
+                        width="1412"
+                        data-original-height="507"
+                        data-original-width="1412"
+                        src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiIQ3XAexauMwjSmKSi0wrXsPOkOQ20jRvEKdH4BFGOpIN6wNn7g6bTfnfg27vpyKD0v_8uC0yUjmO97hGQvt1ndX9g3p7rxhCk1L8nOaT9oBzy0MizMTSGFw-co920CC9Kx_rYLeixcrXUeuJIYwKKUJDz2l9w0Lch36sYkyLwtRnjrxJJq347S3kLdpWj/s1412/LB11.png"
+                    />
+
+                </a>
             </div>
 
-            <div class="card card-d">
-                <span class="badge-sec">D. Guided Speaking</span>
-                <p style="margin-bottom: 4px;">
-                    Practice asking and telling peers about your daily routine using structured prompts.
-                </p>
-                <ol>
-                    <li>Partner A: Ask about morning habits.</li>
-                    <li>Partner B: Answer with time details.</li>
-                </ol>
-                <input type="text" class="blank-line-long" data-save="input-l11-main-d-1" placeholder="Notas de la conversación...">
+            <div class="lesson-footer">
+                <span>UNIT 3 | 32</span>
+                <span>LEARNING BRIDGE ENGLISH · A1 CEFR · LATIN AMERICAN EDITION</span>
             </div>
-
-        </div>
-
-        <div class="lesson-footer">
-            <span>LEARNING BRIDGE ENGLISH · A1 CEFR · LATIN AMERICAN EDITION</span>
-            <span>UNIT 3 | 31</span>
         </div>
 
     </div>
 
+    <!-- FRANJA FINAL -->
     <div class="bottom-bar"></div>
 
+    <!-- VENTANA MODAL: PIZARRA INTERACTIVA -->
+    <div class="modal-overlay" id="whiteboardModal">
+        <div class="modal-container" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h3>💡 Pizarra Interactiva: My Family</h3>
+                <button class="close-modal-btn" type="button" onclick="closeWhiteboard()">×</button>
+            </div>
+            <textarea class="board-textarea" id="whiteboardText" placeholder="Escribe aquí notas adicionales, ejemplos de miembros de la familia o explicaciones gramaticales para la clase..."></textarea>
+            <div class="modal-footer">
+                <button class="btn-board-action" type="button" onclick="closeWhiteboard()">Guardar y Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPT DE PERSISTENCIA Y PIZARRA -->
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const inputs = document.querySelectorAll("input[data-save]");
-            inputs.forEach(input => {
-                const key = "lesson11_main_" + input.getAttribute("data-save");
-                const savedValue = localStorage.getItem(key);
-                if (savedValue !== null) {
-                    input.value = savedValue;
-                }
-                input.addEventListener("input", () => {
-                    localStorage.setItem(key, input.value);
+        const STORAGE_KEY = 'learning_bridge_lesson11_my_family';
+
+        function guardarRespuestas() {
+            try {
+                const datos = {};
+                const campos = document.querySelectorAll('input[type="text"], textarea');
+                campos.forEach((campo, indice) => {
+                    const clave = campo.dataset.persistKey || `campo_${indice}`;
+                    campo.dataset.persistKey = clave;
+                    datos[clave] = campo.value;
                 });
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(datos));
+            } catch (error) {
+                console.warn('No fue posible guardar las respuestas:', error);
+            }
+        }
+
+        function cargarRespuestas() {
+            try {
+                const datosGuardados = localStorage.getItem(STORAGE_KEY);
+                if (!datosGuardados) return;
+                const datos = JSON.parse(datosGuardados);
+                const campos = document.querySelectorAll('input[type="text"], textarea');
+                campos.forEach((campo, indice) => {
+                    const clave = campo.dataset.persistKey || `campo_${indice}`;
+                    campo.dataset.persistKey = clave;
+                    if (Object.prototype.hasOwnProperty.call(datos, clave)) {
+                        campo.value = datos[clave];
+                    }
+                });
+            } catch (error) {
+                console.warn('No fue posible recuperar las respuestas:', error);
+            }
+        }
+
+        function activarPersistencia() {
+            const campos = document.querySelectorAll('input[type="text"], textarea');
+            campos.forEach((campo, indice) => {
+                campo.dataset.persistKey = `campo_${indice}`;
+                campo.addEventListener('input', guardarRespuestas);
             });
-        });
+        }
+
+        function openWhiteboard() {
+            const modal = document.getElementById('whiteboardModal');
+            if (modal) {
+                modal.style.display = 'flex';
+            }
+        }
+
+        function closeWhiteboard() {
+            guardarRespuestas();
+            const modal = document.getElementById('whiteboardModal');
+            if (modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        window.onclick = function(event) {
+            let modal = document.getElementById('whiteboardModal');
+            if (event.target === modal) {
+                closeWhiteboard();
+            }
+        };
+
+        window.onload = function() {
+            cargarRespuestas();
+            activarPersistencia();
+        };
     </script>
 </body>
 </html>
